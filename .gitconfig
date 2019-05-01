@@ -1,0 +1,14 @@
+[user]
+	signingkey = 92E9BD1C2B6582AF
+	email = arpitkumar147@gmail.com
+	name = Arpit Choudhary
+[alias]
+	amend = !git add -A && git commit --amend --no-edit
+	p = !git push origin $(git rev-parse --abbrev-ref HEAD)
+	c = "!git add -A && git commit -m "
+	cc = "!git commit --amend -m "
+	ck = !git checkout
+	f = !git fetch --all && git rebase origin/master
+	n = !git checkout -b
+[commit]
+	gpgsign = true

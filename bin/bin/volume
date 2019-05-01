@@ -1,0 +1,24 @@
+#!/bin/sh
+
+amixer set Master "$@"
+
+# set a msgid so it replaced previous one
+msgid=147147
+
+
+# Query amixer for the current volume and whether or not the speaker is muted
+volume="$(amixer get Master | tail -1 | awk '{print $5}' | sed 's/[^0-9]*//g')"
+mute="$(amixer get Master | tail -1 | awk '{print $6}' | sed 's/[^a-z]*//g')"
+
+
+if [[ $volume == 0 || "$mute" == "off" ]]; then
+ # Show the sound muted notification
+ dunstify -a "volume" -u low -i audio-volume-muted -r $msgid "Volume muted" 
+else
+ # Show the volume notification
+ dunstify -a "volume" -u low -i audio-volume-high -r $msgid \
+ "Volume: ${volume}%" "$(getProgressString 20 " " " " $volume)"
+fi
+
+# Play the volume changed sound
+canberra-gtk-play -i audio-volume-change -d "volume"
