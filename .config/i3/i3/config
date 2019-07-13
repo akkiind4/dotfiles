@@ -84,6 +84,7 @@ assign [class="vlc"] $ws5
 # assign [class="Spotify"] $ws5
 assign [class="Steam"] $ws6
 assign [class="Evince"] $ws7
+assign [class="Zathura"] $ws7
 assign [class="Whatsie"] $ws10
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
@@ -198,7 +199,7 @@ bindsym $mod+Mod2+KP_2 exec google-chrome-stable
 bindsym $mod+Mod2+KP_3 exec subl3
 bindsym $mod+Mod2+KP_4 exec thunar
 bindsym $mod+Mod2+KP_5 exec "terminology -e cmus"
-bindsym $mod+Mod2+KP_6 exec steam-runtime
+bindsym $mod+Mod2+KP_6 exec steam
 bindsym $mod+Mod2+KP_7 exec spotify
 # bindsym $mod+Mod2+KP_8 exec
 # bindsym $mod+Mod2+KP_9 exec
@@ -212,6 +213,7 @@ for_window [class=".*"] border pixel 0
 exec --no-startup-id compton -f
 exec --no-startup-id dunst
 exec --no-startup-id numlockx on
+exec --no-startup-id tilda
 exec_always --no-startup-id /home/appi/.config/i3/launch.sh &
 exec_always --no-startup-id feh --bg-scale /home/appi/Pictures/wallpapers/wp.png
 # does not work god knows why
